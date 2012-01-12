@@ -6,9 +6,10 @@ Include jquery.
 Include this file.  
 <pre>
 $(function () {
-  $('body').each(function() { $(this).imgzr(); });
+  $('body').imgzr();
 });
 </pre>
+It will look into the given element (here "body") for image and change the src if needed.
 
 # configuration
 Prepare your images like this : 
@@ -19,7 +20,29 @@ Prepare your images like this :
   data-large="./img/large.jpg" />
 </pre>
 Your image should have the small image in src to prevent bandwith overcharging.
-Add data-<size> with the image
+Add data-<size> with the well sized image.
+
+The default configuration is the following :
+<pre>
+resolutions:{
+  small:{min:0, max:480},
+  medium:{min:480, max:768},
+  large:{min:768, max:10000}
+}
+</pre>
+You can change this passing a new configuration to the function call :
+<pre>
+$(function () {
+  var config = {
+    resolutions:{
+      small:{min:0, max:1000},
+      medium:{min:1000, max:10000},
+      large:{min:10000, max:100000}
+    }
+  };
+  $('body').imgzr(config);
+});
+</pre>
 
 # license
 This script is licensed under the terms of the WTF Public License (see [here](http://en.wikipedia.org/wiki/WTFPL) and [here](http://sam.zoy.org/wtfpl/)) :
@@ -42,4 +65,4 @@ This script is licensed under the terms of the WTF Public License (see [here](ht
 # Contact
 You can contact me at siegfried.ehretATgmail.com
 (replace AT with @)
-Please write "img2base64" or something in your subject.
+Please write "imgzr" or something in your subject.
