@@ -4,11 +4,11 @@
     <title>imgzr.js demo</title>
   </head>
 	<body>
-    <img src="img_small.jpg" alt="" 
+    <img id="theImg" src="img_small.jpg" alt="" 
       data-small="img_small.jpg" 
       data-medium="img_medium.jpg"
       data-large="img_large.jpg" />
-    
+    <div id="info"></div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="../imgzr.js"></script>
     <script>
@@ -21,6 +21,9 @@
           }
         }
         $('body').imgzr(config);
+        $('#info')
+          .append('Image width : ' + $('#theImg').width() + '<br/>')
+          .append('Screen width : ' + screen.width);
       });
     </script>
   </body>
