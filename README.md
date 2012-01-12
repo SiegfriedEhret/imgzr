@@ -12,15 +12,17 @@ $(function () {
 It will look into the given element (here "body") for image and change the src if needed.
 
 # configuration
-Prepare your images like this : 
-<pre>
-< img src="./img/small.jpg" alt="" 
-  data-small="./img/small.jpg" 
-  data-medium="./img/medium.jpg"
-  data-large="./img/large.jpg" />
-</pre>
+Prepare your images !
 Your image should have the small image in src to prevent bandwith overcharging.
 Add data-<size> with the well sized image.
+Example : 
+<pre>
+img src="./img/small.jpg" alt="" 
+  data-small="./img/small.jpg" 
+  data-medium="./img/medium.jpg"
+  data-large="./img/large.jpg"
+</pre>
+(Sorry, I dropped the "<" & "/>" because of the pre tag)
 
 The default configuration is the following :
 <pre>
