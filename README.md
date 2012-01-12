@@ -14,7 +14,7 @@ It will look into the given element (here "body") for image and change the src i
 # configuration
 Prepare your images like this : 
 <pre>
-<img src="./img/small.jpg" alt="" 
+< img src="./img/small.jpg" alt="" 
   data-small="./img/small.jpg" 
   data-medium="./img/medium.jpg"
   data-large="./img/large.jpg" />
