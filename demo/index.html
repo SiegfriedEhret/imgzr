@@ -18,6 +18,13 @@
     <script src="../imgzr.js"></script>
     <script>
       $(function() {
+        var getScreenWidth = function() {
+          if (window.orientation && (window.orientation == 90 || window.orientation == -90)) {
+            return screen.height;
+          }
+          return screen.width;
+        };
+      
         var config = {
           resolutions:{
             small:{min:0, max:480},
@@ -26,7 +33,7 @@
           }
         }
         $('body').imgzr(config);
-        $('#info').append('Screen width : ' + screen.width);
+        $('#info').append('Screen width : ' + getScreenWidth());
       });
     </script>
   </body>

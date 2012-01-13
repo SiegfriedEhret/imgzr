@@ -31,7 +31,6 @@
   $.fn.imgzr = function(options) {
     var settings = $.extend({}, defaults, options),
       screenWidth = getScreenWidth();
-    alert(screenWidth);
     for (var i in settings.resolutions) {
       if(settings.resolutions.hasOwnProperty(i)) {
         if (settings.resolutions[i].min <= screenWidth && screenWidth <= settings.resolutions[i].max) {
