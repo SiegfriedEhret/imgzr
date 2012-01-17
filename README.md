@@ -3,6 +3,7 @@ jQuery image selector based on screen width
 
 # how to use
 Include jquery.  
+Include [jquery smartresize](https://github.com/louisremi/jquery-smartresize/).
 Include this file.  
 <pre>
 $(function () {
