@@ -15,31 +15,43 @@
 */
 
 (function($){
-  var defaults = {
+  var version = '0.2',
+    settings = {},
+    defaults = {
       resolutions:{
         small:{min:0, max:480},
-        medium:{min:480, max:768},
-        large:{min:768, max:10000}
+        medium:{min:481, max:768},
+        large:{min:769, max:10000}
       }
     },
     getScreenWidth = function() {
-      if (window.orientation && (window.orientation == 90 || window.orientation == -90)) {
-        return screen.height;
+      if (!isNaN(window.orientation)) {
+        if (window.orientation == 90 || window.orientation == -90) return screen.height;
+        return screen.width;
       }
-      return screen.width;
-    };
-  $.fn.imgzr = function(options) {
-    var settings = $.extend({}, defaults, options),
-      screenWidth = getScreenWidth();
-    for (var i in settings.resolutions) {
-      if(settings.resolutions.hasOwnProperty(i)) {
-        if (settings.resolutions[i].min <= screenWidth && screenWidth <= settings.resolutions[i].max) {
-          $(this).find('img').each(function() {
-            $(this).attr('src', $(this).data(i));
-          });
+      return $(document).width();
+    },
+    doTheMagic = function(element, settings) {
+      for (var i in settings.resolutions) {
+        if(settings.resolutions.hasOwnProperty(i)) {
+          if (settings.resolutions[i].min <= settings.screenWidth && settings.screenWidth <= settings.resolutions[i].max) {
+            $(element).find('img').each(function() {
+              $(this).attr('src', $(this).data(i));
+            });
+            return;
+          }
         }
       }
     }
+  $.fn.imgzr = function(options) {
+    var leThis = this;
+    settings = $.extend({}, defaults, options);
+    $(window)
+      .bind(window.onorientationchange ? 'onorientationchange' : 'smartresize', function( event ) {
+        settings.screenWidth = getScreenWidth();
+        doTheMagic(leThis, settings);
+      })
+      .trigger(window.onorientationchange ? 'orientationchange' : 'smartresize');
     return this;
   };
 })(jQuery);

@@ -6,6 +6,9 @@
       img {
         max-width:100%;
       }
+      #info {
+        border:1px solid hotpink;
+      }
     </style>
   </head>
 	<body>
@@ -13,27 +16,20 @@
       data-small="img_small.jpg" 
       data-medium="img_medium.jpg"
       data-large="img_large.jpg" />
-    <div id="info"></div>
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="jquery.smartresize.js"></script>
     <script src="../imgzr.js"></script>
     <script>
       $(function() {
-        var getScreenWidth = function() {
-          if (window.orientation && (window.orientation == 90 || window.orientation == -90)) {
-            return screen.height;
-          }
-          return screen.width;
-        };
-      
         var config = {
           resolutions:{
             small:{min:0, max:480},
-            medium:{min:480, max:768},
-            large:{min:768, max:10000}
+            medium:{min:481, max:768},
+            large:{min:769, max:10000}
           }
         }
         $('body').imgzr(config);
-        $('#info').append('Screen width : ' + getScreenWidth());
       });
     </script>
   </body>
