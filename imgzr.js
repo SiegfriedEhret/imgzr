@@ -44,14 +44,14 @@
       }
     }
   $.fn.imgzr = function(options) {
-    var leThis = this;
+    var leThis = this, eventType = window.onorientationchange ? 'onorientationchange' : 'smartresize';
     settings = $.extend({}, defaults, options);
     $(window)
-      .bind(window.onorientationchange ? 'onorientationchange' : 'smartresize', function( event ) {
+      .bind(eventType, function( event ) {
         settings.screenWidth = getScreenWidth();
         doTheMagic(leThis, settings);
       })
-      .trigger(window.onorientationchange ? 'orientationchange' : 'smartresize');
+      .trigger(eventType);
     return this;
   };
 })(jQuery);
