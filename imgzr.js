@@ -37,6 +37,7 @@
           if (settings.resolutions[i].min <= settings.screenWidth && settings.screenWidth <= settings.resolutions[i].max) {
             $(element).find('img').each(function() {
               $(this).attr('src', $(this).data(i));
+              $('#info').append($(this).data(i));
             });
             return;
           }
@@ -49,6 +50,7 @@
     $(window)
       .bind(window.onorientationchange ? 'onorientationchange' : 'smartresize', function( event ) {
         settings.screenWidth = getScreenWidth();
+        $('#info').empty().append(settings.screenWidth+'<br/>');
         doTheMagic(leThis, settings);
       })
       .trigger(window.onorientationchange ? 'orientationchange' : 'smartresize');
