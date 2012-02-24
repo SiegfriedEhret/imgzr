@@ -15,7 +15,7 @@
 */
 
 (function($){
-  var version = '0.3',
+  var version = '0.3.1',
     settings = {},
     defaults = {
       resolutions:{
@@ -31,14 +31,6 @@
       }
       return $(document).width();
     },
-    getDeviceType = function() {
-      var ua = navigator.userAgent.toLowerCase();
-      alert(ua);
-      if(ua.match(/iphone/i)) return 'iphone';
-      else if (ua.match(/ipod/i)) return 'ipod';
-      else if (ua.match(/ipad/i)) return 'ipad';
-      else if (ua.match(/android/i)) > -1) return 'android';
-    }
     doTheMagic = function(element, settings) {
       for (var i in settings.resolutions) {
         if(settings.resolutions.hasOwnProperty(i)) {
@@ -55,7 +47,6 @@
   $.fn.imgzr = function(options) {
     var leThis = this, eventType = window.onorientationchange ? 'onorientationchange' : 'smartresize';
     settings = $.extend({}, defaults, options);
-    alert(getDeviceType());
     $(window)
       .bind(eventType, function( event ) {
         settings.screenWidth = getScreenWidth();
